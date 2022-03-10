@@ -1,17 +1,16 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
 import os
+import json
 
-conf_db = {'host' : 'mysql741.umbler.com',
-            'port' : 41890,
-            'username' : 'dataflow-user-db',
-            'password' : '*Rcf7qt#5VFE',
-            'database' : 'dataflow',}
+load_dotenv()
+CONFIG_DB = json.loads(os.getenv('CONFIG_DB'))
 
 class Database():
     def __init__(self):
-        self.engine = create_engine(f'mysql+pymysql://{conf_db["username"]}:{conf_db["password"]}@{conf_db["host"]}:{conf_db["port"]}/{conf_db["database"]}')
+        self.engine = create_engine(f'mysql+pymysql://{CONFIG_DB["username"]}:{CONFIG_DB["password"]}@{CONFIG_DB["host"]}:{CONFIG_DB["port"]}/{CONFIG_DB["database"]}')
         self.base = declarative_base()
         self.Session = sessionmaker(bind=self.engine)
         self.infra = self.Session()
