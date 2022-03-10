@@ -1,6 +1,7 @@
 from infra.config import Database
 from sqlalchemy import Table
 
+#  contrução de modelos prontos
 class ConfigSite(Database().base):
     __table__ = Table('config_site', Database().base.metadata,
                     autoload=True, autoload_with=Database().engine)
@@ -104,3 +105,27 @@ class Users(Database().base):
 class Empresas(Database().base):
     __table__ = Table('sit_empresas', Database().base.metadata,
                     autoload=True, autoload_with=Database().engine)
+
+"""
+  ___
+                               ,-""   `.
+                             ,'  _   e )`-._
+                            /  ,' `-._<.===-' (QUACK!)
+                           /  /
+                          /  ;
+              _.--.__    /   ;
+ (`._    _.-""       "--'    |
+ <_  `-""                     \
+  <`-                          :
+   (__   <__.                  ;
+     `-.   '-.__.      _.'    /
+        \      `-.__,-'    _,'
+         `._    ,    /__,-'
+            ""._\__,'< <____
+                 | |  `----.`.
+                 | |        \ `.
+                 ; |___      \-``
+                 \   --<
+                  `.`.<
+     Patoda vida    `
+"""
